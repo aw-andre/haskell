@@ -4,7 +4,15 @@
   outputs = { nixpkgs, ... }:
     let pkgs = nixpkgs.legacyPackages."x86_64-linux";
     in {
-      devShells."x86_64-linux".default =
-        pkgs.mkShell { packages = with pkgs.haskellPackages; [ ghc haskell-language-server ormolu ]; };
+      devShells."x86_64-linux".default = pkgs.mkShell {
+        packages = [
+          (pkgs.writeShellScriptBin "run"
+            "runhaskell -Wall -Wno-type-defaults $1")
+        ] ++ (with pkgs.haskellPackages; [
+          ghc
+          haskell-language-server
+          ormolu
+        ]);
+      };
     };
 }
