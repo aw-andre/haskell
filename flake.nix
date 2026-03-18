@@ -7,7 +7,7 @@
       devShells."x86_64-linux".default = pkgs.mkShell {
         packages = [
           (pkgs.writeShellScriptBin "run"
-            "runhaskell -Wall -Wno-type-defaults $1")
+            "runhaskell -Wall -Wno-type-defaults -Wno-name-shadowing $1")
         ] ++ (with pkgs.haskellPackages; [
           ghc
           haskell-language-server
