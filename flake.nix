@@ -12,6 +12,7 @@
           ghc
           haskell-language-server
           ormolu
+          stack
         ]);
       };
     };
