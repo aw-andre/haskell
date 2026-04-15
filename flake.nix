@@ -9,7 +9,7 @@
           (pkgs.writeShellScriptBin "run"
             "runhaskell -Wall -Wno-type-defaults -Wno-name-shadowing $1")
         ] ++ (with pkgs.haskellPackages; [
-          (ghcWithPackages (ps: with ps; [ QuickCheck hspec checkers ]))
+          (ghcWithPackages (ps: with ps; [ QuickCheck hspec checkers trifecta parsers ]))
           haskell-language-server
           ormolu
           stack
